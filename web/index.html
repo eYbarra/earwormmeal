@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earworm 🎵 — What's stuck in your head?</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <h1 class="logo">🎵 Earworm</h1>
+            <p class="tagline">what's stuck in your head?</p>
+        </div>
+        <div class="header-right">
+            <div id="connection-status" class="chip connection-status" aria-live="polite">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="status-text">Disconnected</span>
+            </div>
+            <div id="viewer-count" class="chip viewer-count" aria-live="polite">
+                <span class="viewer-icon" aria-hidden="true">👀</span>
+                <span class="viewer-text">0 listening</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="post-section" aria-label="Share a vibe">
+            <details class="post-collapse" open>
+                <summary class="post-toggle">Share an earworm ✏️</summary>
+                <form id="post-form" aria-label="Post a new earworm">
+                    <div class="form-group">
+                        <label for="youtube-url">YouTube URL</label>
+                        <input
+                            type="url"
+                            id="youtube-url"
+                            name="youtube_url"
+                            placeholder="https://www.youtube.com/watch?v=... or youtu.be/... or youtube.com/shorts/..."
+                            required
+                            autocomplete="off"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="thought">What's on your mind?</label>
+                        <textarea
+                            id="thought"
+                            name="thought"
+                            placeholder="This song has been stuck in my head all day..."
+                            maxlength="150"
+                            required
+                            rows="2"
+                        ></textarea>
+                        <span id="char-count" class="char-count" aria-live="polite">0 / 150</span>
+                    </div>
+                    <button type="submit" id="submit-btn">Share your earworm 🎶</button>
+                </form>
+            </details>
+        </section>
+
+        <section class="grid-section" aria-label="Vibes board">
+            <div class="sort-toggle">
+                <button id="sort-date" class="sort-btn active">Newest</button>
+                <button id="sort-likes" class="sort-btn">Most Liked</button>
+                <button id="sort-shuffle" class="sort-btn shuffle-btn">🔀 Shuffle</button>
+            </div>
+            <div id="card-grid" class="card-grid" role="feed" aria-label="Recent earworms">
+                <!-- Vibe cards will be rendered here by app.js -->
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js?v=2"></script>
+</body>
+</html>
